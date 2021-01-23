@@ -13,3 +13,53 @@
  *= require_tree .
  *= require_self
  */
+
+ html {
+    margin: 0px;
+    height: 100%;
+    font-family: 'GlacialIndifferenceRegular';
+    font-weight: normal;
+    font-style: normal;
+ }
+
+ body {
+    display: flex;
+    margin: 0px;
+/* 
+    text-align: center; */
+    justify-content: center;
+    align-items:center;
+    background-color:rgb(255, 255, 255);
+    height: 100%;
+}
+
+.landing-page{
+    text-align: center;
+    justify-content: center;
+    align-items:center;
+}
+
+.kovidyante-logo {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.kovidyante-link {
+    margin: 0;
+   font-size: 50px;
+   color: #7ed957;
+}
+
+.button {
+    color: #7ed957;
+}
+
+.log-in-form {
+    flex-direction: column;
+}
+
+.field {
+
+    justify-content: space-between;
+}
