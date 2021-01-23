@@ -1,0 +1,14 @@
+<% if current_user.nil? %>
+	<%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
+<% else %>
+
+	<% if current_user.admin_role? %>
+		<h3>Welcome Admin</h3>
+	<% elsif current_user.teacher_role? %>
+		<h3>Welcome Teacher</h3>
+	<% else %>
+		<h3>Welcome Student</h3>
+	<% end %>
+	<%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
+<% end %>
+
