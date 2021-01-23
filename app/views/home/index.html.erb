@@ -7,7 +7,7 @@
 
 		<div class = 'log-in'>
 			<% if current_user.nil? %>
-				<%= link_to new_user_session_path, class: 'button is-success is-outlined is-large' do %>Tara na!<% end %>
+				<%= link_to new_user_session_path, class: 'button is-success is-inverted is-outlined is-medium'  do %>Tara na!<% end %>
 			<% else %>
 
 				<% if current_user.admin_role? %>

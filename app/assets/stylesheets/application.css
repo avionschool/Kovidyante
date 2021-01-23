@@ -29,7 +29,7 @@
     text-align: center; */
     justify-content: center;
     align-items:center;
-    background-color:rgb(255, 255, 255);
+    background-color: #7ed957;
     height: 100%;
 }
 
@@ -48,12 +48,12 @@
 .kovidyante-link {
     margin: 0;
    font-size: 50px;
-   color: #7ed957;
+   color: white;
 }
 
-.button {
-    color: #7ed957;
-}
+/* .button {
+    color:white;
+} */
 
 .log-in-form {
     flex-direction: column;
