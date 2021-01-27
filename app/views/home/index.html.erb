@@ -1,14 +1,11 @@
-<% if current_user.nil? %>
-	<%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
+<h1>Kovidyante.edu</h1>
+<p>Welcome, <%= current_user.name %> | <%= current_user.role %>!</p>
+
+
+
+<% if current_user %>
+    <%= link_to 'Log out', destroy_user_session_path, method: :delete%>
 <% else %>
-
-	<% if current_user.admin_role? %>
-		<h3>Welcome Admin</h3>
-	<% elsif current_user.teacher_role? %>
-		<h3>Welcome Teacher</h3>
-	<% else %>
-		<h3>Welcome Student</h3>
-	<% end %>
-	<%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
+    <%= link_to 'Sign up', new_user_registration_path %> |
+    <%= link_to 'Log in', new_user_session_path%>
 <% end %>
-

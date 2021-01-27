@@ -8,11 +8,11 @@ class Ability
     # 
       user ||= User.new # guest user (not logged in)
       can :manage, :all
-      if user.admin_role?
+      if user.admin?
         can :manage, :all
         can :access, :rails_admin       # only allow admin users to access Rails Admin
         can :manage, :dashboard  
-      elsif user.teacher_role
+      elsif user.teacher
         can :manage, Student
       else 
         can :read, :all
