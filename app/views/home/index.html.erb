@@ -9,9 +9,9 @@
 				<%= link_to new_user_session_path, class: 'button is-success is-inverted is-outlined is-medium'  do %>Tara na!<% end %>
 			<% else %>
 
-				<% if current_user.admin_role? %>
+				<% if current_user.admin? %>
 					<h3>Welcome Admin</h3>
-				<% elsif current_user.teacher_role? %>
+				<% elsif current_user.role == "teacher"? %>
 					<h3>Welcome Teacher</h3>
 				<% else %>
 					<h3>Welcome Student</h3>
