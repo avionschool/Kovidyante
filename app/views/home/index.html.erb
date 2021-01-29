@@ -1,22 +1,18 @@
-	<div class = 'landing-page'>
+<div class = 'landing-page'>
 		<div class = 'title'>
 			<img src='https://i.ibb.co/mcwVCNt/Untitled-design-1-removebg.png' class = 'kovidyante-logo'>
 			<p class = 'kovidyante-link'> kovidyante.edu </p>
 		</div>
-
 		<div class = 'log-in'>
 			<% if current_user.nil? %>
-				<%= link_to new_user_session_path, class: 'button is-success is-inverted is-outlined is-medium'  do %>Tara na!<% end %>
-			<% else %>
-
-				<% if current_user.admin? %>
-					<h3>Welcome Admin</h3>
-				<% elsif current_user.role == "teacher"? %>
-					<h3>Welcome Teacher</h3>
-				<% else %>
-					<h3>Welcome Student</h3>
-				<% end %>
-				<%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
+				<%= link_to 'Tara na!', new_user_session_path, class: 'button is-success is-inverted is-outlined is-medium' %>
+			<% elsif current_user.admin == true %>
+				<h3>Welcome Admin</h3>
+			<% elsif current_user.role == "teacher" %>
+				<h3>Welcome Teacher</h3>
+			<% elsif current_user.role == "student" %>
+				<h3>Welcome Student</h3>
 			<% end %>
+			<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 		</div>
 	</div>
