@@ -78,6 +78,7 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    chunky_png (1.4.0)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     devise (4.7.3)
@@ -196,6 +197,10 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rqrcode (1.2.0)
+      chunky_png (~> 1.0)
+      rqrcode_core (~> 0.2)
+    rqrcode_core (0.2.0)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -267,6 +272,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   rails_admin (~> 2.0, >= 2.0.2)
+  rqrcode
   sass-rails (>= 6)
   selenium-webdriver
   spring

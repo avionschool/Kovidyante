@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  require 'rqrcode'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,4 +9,6 @@ class User < ApplicationRecord
   validates :role, presence: true
         
   enum role: {student: 0, teacher: 1}
+
+  
 end
