@@ -6,14 +6,14 @@
 
 		<div class = 'log-in'>
 			<% if current_user.nil? %>
-				<%= link_to new_user_session_path, class: 'button is-success is-inverted is-outlined is-medium'  do %>Tara na!<% end %>
+				<%= link_to 'Sign in with Google', user_google_oauth2_omniauth_authorize_path %>
 			<% else %>
 
 				<% if current_user.admin? %>
 					<h3>Welcome Admin</h3>
-				<% elsif current_user.role == "teacher"? %>
+				<% elsif current_user.role == "teacher" %>
 					<h3>Welcome Teacher</h3>
-				<% else %>
+				<% elsif current_user.role == "student" %>
 					<h3>Welcome Student</h3>
 				<% end %>
 				<%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
