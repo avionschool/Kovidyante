@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
+  skip_before_action :verify_authenticity_token
+
   # GET /resource/confirmation/new
   # def new
   #   super

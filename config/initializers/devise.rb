@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '2d49ebb1a6bb0fce519a14c94db57151a9816b0c424752cb00c2210337b0f320aebaba85864a4f558a8e03a2f99c9cce29753734a46803bb074fb5fcfce9a53d'
+  # config.secret_key = '4e9c22fce720e1a204a9e9a368b45f382c3c0768b03b197cb9a1c45364e204f1e295fbaacbaebdb5106ccedfef1d3986c02023689bedd1fd919c2eacd83e10d3'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'be63f505a26f37d7c65f47497e66dc4d4444dbab75fd727657bd08f819f892699b03847812689538f1686c6c5d71cb8c59987e7e890d2fbcacef8a7e5a0d6c3b'
+  # config.pepper = 'd0af028a859c806ed00384663b7a12175b0584d8169ec2a6e74ce5bd2635fcc73675f4894f0ff4fe0bdc4378b426181a0bfe61fa683ba83b0f3997ba3e1a12f7'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -273,13 +273,6 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  config.omniauth :google_oauth2, ENV['329772767369-bikbkum8h429ubukuchohu178j6cgiaq.apps.googleusercontent.com'], ENV['Gt04sB4dBTPBfOA21Cv66Jdd'],
-  {
-  access_type: "offline",
-  prompt: "consent",
-  select_account: true,
-  scope: 'userinfo.email, calendar'}
-
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -315,5 +308,12 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  config.omniauth :google_oauth2, ENV['329772767369-bikbkum8h429ubukuchohu178j6cgiaq.apps.googleusercontent.com'], ENV['Gt04sB4dBTPBfOA21Cv66Jdd'], {
+    access_type: "offline",
+    prompt: "consent",
+    select_account: true,
+    scope: 'userinfo.email, calendar'
+}
 
 end

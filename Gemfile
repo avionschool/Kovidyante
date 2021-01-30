@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
-gem 'devise', :git => "https://github.com/heartcombo/devise.git", ref: '8bb358cf80a632d3232c3f548ce7b95fd94b6eb2'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'cancancan'
 
 # Google meets API
