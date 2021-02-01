@@ -12,7 +12,7 @@
 				<h3>Welcome Teacher</h3>
 			<% elsif current_user.role == "student" %>
 				<%# <h3>Welcome Student</h3>
-				<%=raw @qr.as_html%> %>
+				<%=raw @qr.as_html%>
 				<%= render_qr_code(current_user.id.to_s).html_safe%>
 				
 
