@@ -34,6 +34,7 @@ gem 'cancancan'
 # Google meets API
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 
 group :development, :test do
