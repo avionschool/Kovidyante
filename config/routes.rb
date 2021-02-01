@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :teachers
+  resources :students
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -6,6 +8,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "home#index"
-
-  resources :teachers, :students
+  resources :subjects
 end
