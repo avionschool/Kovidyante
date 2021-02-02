@@ -13,6 +13,5 @@
 		<% elsif current_user.role == "student" %>
 			<h3>Welcome Student</h3>
 		<% end %>
-		<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 	</div>
 </div>

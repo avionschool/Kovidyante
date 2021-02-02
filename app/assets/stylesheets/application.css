@@ -25,8 +25,6 @@
  body {
     display: flex;
     margin: 0px;
-/* 
-    text-align: center; */
     justify-content: center;
     align-items:center;
     background-color: #7ed957;
@@ -48,7 +46,7 @@
 .kovidyante-link {
     margin: 0;
    font-size: 50px;
-   color: white;
+   /* color: white; */
 }
 
 /* .button {
