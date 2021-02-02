@@ -1,0 +1,41 @@
+<div class="container">   
+<% if !flash[:notice].blank? %>   
+   <div>   
+      <%= flash[:notice] %>   
+   </div>   
+<% end %>   
+
+<% if current_user.role == 'teacher' %>
+<br>   
+  
+    <%= link_to "New Homework", new_homework_path %>   
+<br>   
+<br>   
+<% end %>
+<table border="3">   
+   <thead>   
+      <tr>   
+         <th>Homework</th>   
+         <th>Download Link</th>   
+         <% if current_user.role == 'teacher' %>
+         <th>Action</th>   
+         <% end %>
+      </tr>   
+   </thead>   
+      
+   <tbody>   
+      <% @homeworks.each do |homework| %>   
+            
+        <tr>   
+            <td><%= homework.name %></td>   
+            <td><%= link_to "Download", homework.attachment_url %></td>   
+            <% if current_user.role == 'teacher' %>
+            <td><%= link_to "Delete",  homework, method: :delete, confirm: "Are you sure you want to delete #{homework.name}?" %></td>   
+            <% end %>
+        </tr>   
+            
+      <% end %>   
+   </tbody>   
+      
+</table>   
+</div> 

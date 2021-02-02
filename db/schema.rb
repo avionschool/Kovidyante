@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_032104) do
+ActiveRecord::Schema.define(version: 2021_02_02_031124) do
+
+  create_table "homeworks", force: :cascade do |t|
+    t.string "name"
+    t.string "attachment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "students", force: :cascade do |t|
     t.string "name"
