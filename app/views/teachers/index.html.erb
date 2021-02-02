@@ -1,10 +1,35 @@
-<div class = 'landing-page'>
-	<div class = 'title'>
-		<img src='https://i.ibb.co/mcwVCNt/Untitled-design-1-removebg.png' class = 'kovidyante-logo'>
-		<p class = 'kovidyante-link'> kovidyante.edu </p>
-	</div>
-	<div class = 'log-in'>
-        <h1>Welcome Teacher <%= current_user.name %>!</h1>
-		<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-	</div>
-</div>
+
+<%# DASHBOARD %>
+<div class="columns">
+            <div class="column is-3 ">
+                <aside class="menu is-hidden-mobile">
+                    <p class="menu-label">
+                        General
+                    </p>
+                    <ul class="menu-list">
+                        <li><a class="is-active">Schedule a Meeting</a></li>
+                        <li><a>Library</a></li>
+                        <li><a>Audience</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+			
+            <div class="column is-9">
+                <section class="hero is-info welcome is-small">
+                    <div class="hero-body">
+                        <div class="container">
+                            <h1 class="title">
+                                Hello, Teacher.
+                            </h1>
+                            <h2 class="subtitle">
+                                I hope you are having a great day!
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+              
+                </div>
+            </div>
+        </div>
+		
