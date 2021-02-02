@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :homeworks, only: [:index, :new, :create, :destroy]  
   resources :teachers
   resources :students
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

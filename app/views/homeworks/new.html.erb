@@ -1,0 +1,29 @@
+<% if current_user.role == "teacher" %>
+    <div class="container">   
+        <% if !@homework.errors.empty? %>   
+            <div>                   
+                <ul>   
+                    <% @homework.errors.full_messages.each do |msg| %>   
+                        <li><%= msg %></li>   
+                    <% end %>   
+                </ul>   
+                    
+            </div>   
+        <% end %>   
+        
+        <div>   
+            <%= form_for @homework, html: { multipart: true } do |f| %>   
+                <%= f.label :name %>   
+                <%= f.text_field :name %>   
+                <br><br>   
+                <%= f.label :attachment %>   
+                <%= f.file_field :attachment %>   
+                <br>   
+                <%= f.submit "Save" %>   
+            <% end %>   
+        </div>   
+    </div>
+
+<% else %>
+    <h3>You have no access to this page. Sorry :(</h3>
+<% end %>
