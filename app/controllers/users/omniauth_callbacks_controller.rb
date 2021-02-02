@@ -13,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in(@user)
       redirect_to tasks_path
     else
-      session["devise.google_data"] = request.env["omniauth.auth"]
+      session["devise.google_data"] = request.env["omniauth.auth"].select { |k, v| k == "email" }
       redirect_to new_user_registration_url
     end
   end

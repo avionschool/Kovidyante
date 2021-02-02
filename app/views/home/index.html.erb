@@ -6,7 +6,7 @@
 
 		<div class = 'log-in'>
 			<% if current_user.nil? %>
-				<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
+				<%= link_to "Log In",  new_user_session_path%>
 			<% else %>
 
 				<%# <% if current_user.admin? %> %>

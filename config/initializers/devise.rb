@@ -312,6 +312,7 @@ Devise.setup do |config|
   # config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
   config.omniauth :google_oauth2, '329772767369-bikbkum8h429ubukuchohu178j6cgiaq.apps.googleusercontent.com', 'Gt04sB4dBTPBfOA21Cv66Jdd', {
     access_type: "offline",
+    provider_ignores_state: true,
     prompt: "consent",
     select_account: true,
     scope: 'userinfo.email, calendar'
