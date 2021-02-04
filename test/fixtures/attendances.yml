@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: false
+  student_id: 1
+  student_name: MyString
+
+two:
+  status: false
+  student_id: 1
+  student_name: MyString
