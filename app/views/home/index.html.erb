@@ -11,12 +11,12 @@
 			<% elsif current_user.role == "teacher" %>
 				<h3>Welcome Teacher</h3>
 			<% elsif current_user.role == "student" %>
-				<h3>Welcome Student</h3>
-				
+				<h3>Welcome Student</h3><br>
+<%# 				
 				<%= render_qr_code(current_user.id.to_s).html_safe%>
-				
+				<%= link_to 'arat na!', students_path, class: "button" %><br>
 
 			<% end %>
-			<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+			<%# <%= link_to 'Log out', destroy_user_session_path, method: :delete %> 
 		</div>
 	</div>
