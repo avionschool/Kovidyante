@@ -71,3 +71,47 @@
 
     justify-content: space-between;
 }
+#webcam-preview{
+    margin:auto;
+    position: absolute;
+    top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+   
+  }
+  .element{
+    margin:auto;
+    position: absolute;
+    top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+    width:320px;
+    height:240px;
+    background:rgba(41, 41, 41, 0.8) ;
+    
+    -webkit-clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%);
+    clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%);
+    
+  }
+  
+
+
+/*   
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes beam {
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes scanning {
+    50% {
+      transform: translateY(75px);
+    }
+  } */
