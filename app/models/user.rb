@@ -1,21 +1,20 @@
 class User < ApplicationRecord
   require 'rqrcode'
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
-        #  Connect with GoogleAPI
+  
+  # task refers to the 'meetings' that will be scheduled by teacher/student  
   has_many :tasks
-        
+
+  # before log-in / sign-up ensure that current_user has name and role
   validates :name, presence: true
   validates :role, presence: true
 
-  # devise :omniauthable, omniauth_providers: [:google_oauth2]
-        
   enum role: {student: 0, teacher: 1}
 
-<<<<<<< HEAD
+  # allows user to log-in using their google account to access google calendar feature
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(:email => data["email"]).first
@@ -30,7 +29,4 @@ class User < ApplicationRecord
     end
     user
   end
-=======
-  
->>>>>>> f20ae8f7150e787ece31b981c6e3bff2aed64719
 end

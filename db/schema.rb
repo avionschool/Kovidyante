@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_02_04_111919) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-ActiveRecord::Schema.define(version: 2021_01_30_075858) do
 
   create_table "installs", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,19 +50,6 @@ ActiveRecord::Schema.define(version: 2021_01_30_075858) do
     t.index ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.string "event"
-    t.string "members"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_tasks_on_user_id"
-ActiveRecord::Schema.define(version: 2021_01_30_032104) do
-
   create_table "qrs", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -81,6 +67,19 @@ ActiveRecord::Schema.define(version: 2021_01_30_032104) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "event"
+    t.string "members"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "teachers", force: :cascade do |t|
