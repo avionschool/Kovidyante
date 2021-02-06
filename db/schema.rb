@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 2021_02_04_111919) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "homeworks", force: :cascade do |t|
+    t.string "name"
+    t.string "attachment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "qrs", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
