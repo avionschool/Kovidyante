@@ -1,0 +1,77 @@
+<%= render "banner/banner" %>
+<h1>SCAN YOUR QRCODE HERE FOR ATTENDANCE</h1><br><br>
+<video id="webcam-preview"width="320" height="240"></video>
+<p id="result"></p>
+
+
+  <%# <video id="video"></video> %>
+  <div class="element">
+</div>
+<div class="diode">
+      <div class="laser"></div>
+    </div>
+
+
+<script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
+<script>const codeReader = new ZXing.BrowserQRCodeReader();
+
+let found = false;
+
+codeReader.decodeFromVideoDevice(null, 'webcam-preview', (result, err) => {
+  if (result && found === false) {
+    found = true;
+    // properly decoded qr code
+    console.log('Found QR code!', result.text)
+    document.getElementById('result').textContent = result.text
+    console.log('hello') 
+
+   var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({"title":result.text,"description":"lj figueras"});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+fetch(proxyUrl + "https://rest-api-lj.herokuapp.com/post", requestOptions)
+  .then(response => response.text())
+  .then(result => {console.log(result)
+  window.location.replace("http://localhost:3000/students");
+  }) 
+    
+  .catch(error => console.log('error', error));
+
+
+  }
+
+  if (err) {
+    // As long as this error belongs into one of the following categories
+    // the code reader is going to continue as excepted. Any other error
+    // will stop the decoding loop.
+    //
+    // Excepted Exceptions:
+    //
+    //  - NotFoundException
+    //  - ChecksumException
+    //  - FormatException
+
+    if (err instanceof ZXing.NotFoundException) {
+      console.log('No QR code found.')
+    }
+
+    if (err instanceof ZXing.ChecksumException) {
+      console.log('A code was found, but it\'s read value was not valid.')
+    }
+
+    if (err instanceof ZXing.FormatException) {
+      console.log('A code was found, but it was in a invalid format.')
+    }
+  }
+// console.log(typeof result.text )
+// if (result.text )
+
+})</script>

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_031124) do
+ActiveRecord::Schema.define(version: 2021_02_04_111919) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.boolean "status"
+    t.integer "student_id"
+    t.string "student_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "homeworks", force: :cascade do |t|
     t.string "name"
@@ -56,8 +64,15 @@ ActiveRecord::Schema.define(version: 2021_01_30_075858) do
     t.index ["user_id"], name: "index_tasks_on_user_id"
 ActiveRecord::Schema.define(version: 2021_01_30_032104) do
 
+  create_table "qrs", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
+    t.integer "year_level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

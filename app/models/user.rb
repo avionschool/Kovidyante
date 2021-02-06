@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  require 'rqrcode'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,6 +15,7 @@ class User < ApplicationRecord
         
   enum role: {student: 0, teacher: 1}
 
+<<<<<<< HEAD
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(:email => data["email"]).first
@@ -28,4 +30,7 @@ class User < ApplicationRecord
     end
     user
   end
+=======
+  
+>>>>>>> f20ae8f7150e787ece31b981c6e3bff2aed64719
 end
