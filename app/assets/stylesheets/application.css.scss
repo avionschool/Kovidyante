@@ -34,7 +34,7 @@
     text-align: center;
     /* justify-content: center;
     align-items:center; */
-    background-color: #EFEFEF;
+    background-color:red;
     height: 100%;
 }
 
@@ -121,13 +121,16 @@
       top:0;
       bottom: 0;
       background-color: #EFEFEF;
-      max-height: 1080px;
+      max-height: 950px;
       max-width: 400px;
 
     }
 
     .menu-list {
       padding-top: 200px;
+    }
+    li:hover{
+      background-color: #7ed957;
     }
 /*   
   @keyframes spin {
