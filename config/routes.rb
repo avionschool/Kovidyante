@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :homeworks, only: [:index, :new, :create, :destroy]  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -7,5 +8,6 @@ Rails.application.routes.draw do
   }
   root to: "home#index"
 
-  resources :teachers, :students, :attendances
+  resources :teachers, :students, :attendances, :subjects
+  
 end
