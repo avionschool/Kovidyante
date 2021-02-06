@@ -28,9 +28,15 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'cancancan'
 gem 'carrierwave'  
+
+# Google meets API
+gem 'omniauth-google-oauth2'
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'google-api-client', require: 'google/apis/calendar_v3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
