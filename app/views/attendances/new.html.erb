@@ -22,13 +22,13 @@ codeReader.decodeFromVideoDevice(null, 'webcam-preview', (result, err) => {
     found = true;
     // properly decoded qr code
     console.log('Found QR code!', result.text)
-    document.getElementById('result').textContent = result.text
+    document.getElementById('result').textContent = 'Please wait..'
     console.log('hello') 
 
    var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
-var raw = JSON.stringify({"title":result.text,"description":"lj figueras"});
+var raw = JSON.stringify({"title":result.text,"description":""});
 
 var requestOptions = {
   method: 'POST',
@@ -40,7 +40,7 @@ var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 fetch(proxyUrl + "https://rest-api-lj.herokuapp.com/post", requestOptions)
   .then(response => response.text())
   .then(result => {console.log(result)
-  window.location.replace("http://localhost:3000/students");
+  window.location.replace("http://localhost:3000/attendances");
   }) 
     
   .catch(error => console.log('error', error));

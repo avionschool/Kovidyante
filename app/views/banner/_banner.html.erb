@@ -14,6 +14,12 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
+    <%if Attendance.where(status: true) %>
+     <a class="navbar-item">
+        Attendance
+      </a>
+
+    <% end %>
         <%= link_to 'Attendance', new_attendance_path, class:"navbar-item"%> 
 
       <a class="navbar-item">
