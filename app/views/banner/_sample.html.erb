@@ -1,0 +1,362 @@
+<div class="home-container">
+
+    
+      
+<nav>
+	<a style="text-decoration:none;" href="/">
+	<div class="brand-image">
+		<img src="/assets/images/david-profile.jpg?v=4bccded27b">
+	</div>
+	</a>
+	<div class="nav-container"> 
+		<a href="/" class="brand-name">David Nge</a>
+		<div class="nav-menu">
+			<a href="/" class="nav-menu-item">Home</a>
+			<a href="/blog" class="nav-menu-item">Blog</a>
+			<a href="/notes" class="nav-menu-item">Notes</a>
+			<a href="/projects" class="nav-menu-item">Projects</a>
+			<a href="https://twitter.com/david_nge" class="nav-menu-item">Twitter</a>
+		</div>
+	</div>
+</nav>
+
+
+    <hr class="nav-divider">
+
+
+    <div class="home-desc">
+        <div class="max-width">
+
+          <article class="post tag-javascript tag-blog">
+            <header class="post-header">
+              <h1 class="post-title">How to create sticky sidebar navigation</h1>
+              <div class="written-by">By <a href="/author/david/">David Nge</a> in <a href="/tag/javascript/">javascript</a></div>
+              <!--<section class="post-meta">
+
+                <time class="post-date" datetime="2019-01-09">
+                  09 January 2019
+                </time>
+                 on <a href="/tag/javascript/">javascript</a>
+              </section> -->
+            </header>
+            <section class="post-content">
+
+
+              <p>A few of my favourite blogs have this feature: a sticky sidebar navigation.</p>
+<p>It allows user to quickly navigate to section of the article they're interested in.</p>
+<p>Some examples:</p>
+<p><img src="/content/images/2019/01/ahrefs-demo.gif" alt="ahrefs-demo"></p>
+<p>Source: <a href="https://ahrefs.com/blog/seo-checklist/">https://ahrefs.com/blog/seo-checklist/</a></p>
+<p><img src="/content/images/2019/01/sitebuilderreport-demo.gif" alt="sitebuilderreport-demo"></p>
+<p>Source: <a href="https://www.sitebuilderreport.com/squarespace-review">https://www.sitebuilderreport.com/squarespace-review</a></p>
+<p>Today we're going to create a mash up of these two using  HTML, CSS, Javascript and Bulma.</p>
+<h2 id="thefinalresultwereexpecting">The final result we're expecting</h2>
+<p><img src="/content/images/2019/01/final-result.gif" alt="final-result"></p>
+<p>Since this post is about creating sticky sidebar navigation, I don't want to spend too much time creating the layout of the page, so Bulma is going to help with that.</p>
+<p>For those who might not know, Bulma is a CSS framework that has a lot of built-in components to help us quickly create layouts and web elements that are commonly used.</p>
+<p>First off, we're going to create this layout.</p>
+<p><img src="/content/images/2019/01/create-this-layout.png" alt="create-this-layout"></p>
+<h2 id="creatinga3columnlayoutwithbulma">Creating a 3 column layout with Bulma</h2>
+<p>Creating a 3 column layout with a hero top section is fairly simple with Bulma.</p>
+<p>You basically add <a href="https://bulma.io/documentation/">pre-defined CSS classes</a> to HTML tags (eg: div, h1, h2 etc) and you can achieve the desired result.</p>
+<p>If I add a <code>container</code> class (from Bulma) on a <code>div</code>, this div will act as a container with a max width that will be always centered on desktop.</p>
+<p>Similarly, if I want to create a hero section, there's a <a href="https://bulma.io/documentation/layout/hero/">hero class</a> for that.</p>
+<p>And if I want to create a 3 column layout, I would just need to write something like this:</p>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- columns is a container class--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"columns"</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Can add as many column as you want--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span>Content 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span>Content 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span>Content 3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>
+</span></code></pre>
+<p>This however, will create 3 columns of equal size. If we want to create a layout like Ahref's blog where the content (middle column) takes the majority of the real estate, we would have something like this:</p>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- columns is a container class--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"columns"</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Can add as many column as you want--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span>Content 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column is-half"</span>&gt;</span>Content 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span>Content 3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>
+</span></code></pre>
+<p>Notice the <code>is-half</code> class. This tells the div to take up 50% of the width available. There are more sizes which you can use, such as: <code>one-third</code>, <code>two-thirds</code>, <code>one-quarter</code> etc which are documented <a href="https://bulma.io/documentation/columns/sizes/">here</a>.</p>
+<p>Once you have created the hero section and the 3 column layout, just fill in the rest of the page with arbitrary content and anchor links in the sidebar.</p>
+<p>Here's the HTML code in full:</p>
+<pre><code class="hljs xml">
+<span class="hljs-comment">&lt;!-- index.html --&gt;</span>
+
+<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/bulma.css"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/main.css"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hero-body"</span>&gt;</span>
+   			 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container has-text-centered"</span>&gt;</span>
+     		 <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span>&gt;</span> The definitive SEO Checklist for 2018 <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      		<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"subtitle"</span>&gt;</span>David Nge | January 6, 2019, | 3 comments<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"here"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"columns"</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span>
+				<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"menu sticky"</span>&gt;</span>				
+					<span class="hljs-tag">&lt;<span class="hljs-name">p</span>  <span class="hljs-attr">class</span>=<span class="hljs-string">"menu-label"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Quick Links<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+					<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"menu"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"menu-list"</span>&gt;</span>
+						<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#basic"</span>&gt;</span>Basic SEO Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+						<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#keyword"</span>&gt;</span>Keyword Research Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+						<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#onpage"</span>&gt;</span>On-Page SEO Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+						<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#content"</span>&gt;</span>Content Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+						<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#technical"</span>&gt;</span>Technical SEO Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+						<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#link"</span>&gt;</span>Link Building Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+					<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+				<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+			<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column is-half content"</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"basic"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title is-3"</span>&gt;</span>Basic SEO checklist<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum....<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"keyword"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title is-3"</span>&gt;</span>Keyword Research Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+				<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum....<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"onpage"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title is-3"</span>&gt;</span>On-Page SEO Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum....<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"content"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title is-3"</span>&gt;</span>Content Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum....<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"technical"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title is-3"</span>&gt;</span>Technical SEO Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum....<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"link"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title is-3"</span>&gt;</span>Link Building Checklist<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+				<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum....<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+			<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span>
+				<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>David Nge<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+				<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum....<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+			<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> <span class="hljs-comment">&lt;!-- end container --&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/main.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+
+</code></pre>
+<p><strong>A couple of notes:</strong></p>
+<ol>
+<li>This html assumes you have the following folder structure:</li>
+</ol>
+<p>Project folder (folder)<br>
+index.html<br>
+css (folder)<br>
+main.css<br>
+bulma.css<br>
+js (folder)<br>
+main.js</p>
+<ol start="2">
+<li>
+<p>You need to download <a href="https://bulma.io">bulma</a> and place it in your css folder</p>
+</li>
+<li>
+<p>I'm shortening the lorem ipsum text on purpose, you should <a href="https://www.lipsum.com/">generate more</a> more lorem ipsum text to really see the sibebar navigation in action.</p>
+</li>
+<li>
+<p>You might need to read some documentation for formating <a href="https://bulma.io/documentation/components/menu">menu items</a>, <a href="https://bulma.io/documentation/elements/content/">content</a>, and the <a href="https://bulma.io/documentation/layout/hero/">hero section</a> which are used in the HTML above.</p>
+</li>
+<li>
+<p>The <code>id</code> you defined in the content section inside <code>h2</code> should be the same as the navigation link.</p>
+</li>
+</ol>
+<p>So if you have a <code>&lt;h2 id="basic"&gt;Basic SEO checklist&lt;/h2&gt;</code></p>
+<p>your navigation link should be</p>
+<p><code>&lt;li&gt;&lt;a href="#basic"&gt;Basic SEO Checklist&lt;/a&gt;&lt;/li&gt;</code></p>
+<p>Once you have everything in place you'll have have something like this:</p>
+<p><img src="/content/images/2019/01/demo-html-completed.png" alt="demo-html-completed"></p>
+<p>You should be able to click on the navigation links on the sidebar, and it'll take you to different section of the page.</p>
+<p><img src="/content/images/2019/01/local-after-html.gif" alt="local-after-html"></p>
+<h2 id="makingthesidebarnavigationsticky">Making the sidebar navigation sticky</h2>
+<p>Believe it or not, making the sidebar navigation sticky is as simple as adding a class to the sidebar container:</p>
+<pre><code class="hljs javascript">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"menu sticky"</span>&gt;
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</code></pre>
+<p>and in your main.css:</p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.sticky</span>	{
+	<span class="hljs-attribute">position</span>: sticky;
+  	<span class="hljs-attribute">top</span>: <span class="hljs-number">30px</span>;
+}
+</code></pre>
+<p>Now your sidebar navigation is sticky:</p>
+<p><img src="/content/images/2019/01/sticky-menu-html.gif" alt="sticky-menu-html"></p>
+<p>The next thing you want to do is to make the page scrollable whenever you click on your navigation link:</p>
+<pre><code class="hljs css"><span class="hljs-comment">/** main.css **/</span>
+<span class="hljs-selector-tag">html</span> {
+	<span class="hljs-attribute">scroll-behavior</span>: smooth
+}
+</code></pre>
+<h2 id="addinghighlighttoclickedlinks">Adding highlight to clicked links</h2>
+<p><img src="/content/images/2019/01/highlight-when-clicked.gif" alt="highlight-when-clicked"><br>
+To achieve this, we'll need this piece of Javascript:</p>
+<pre><code class="hljs javascript">
+<span class="hljs-comment">//locate all the navigation links</span>
+<span class="hljs-keyword">var</span> quickLinks = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">".menu-list a"</span>);
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;quickLinks.length; i++){
+	quickLinks[i].addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>{
+        
+        <span class="hljs-comment">//check if a link is currently selected, remove is-active class if yes</span>
+		isActive = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">'is-active'</span>)[<span class="hljs-number">0</span>];
+
+		<span class="hljs-keyword">if</span> (isActive != <span class="hljs-literal">undefined</span>){
+			isActive.classList.remove(<span class="hljs-string">'is-active'</span>);
+		}
+        
+        <span class="hljs-comment">//then add is-active class to the most recent selected link</span>
+		<span class="hljs-keyword">this</span>.classList.add(<span class="hljs-string">'is-active'</span>);
+	
+	});
+
+}
+
+</code></pre>
+<p>Let me explain:</p>
+<p>First, we locate all the navigation links and put them in an array called quickLinks.</p>
+<p>Then for each of the nav link we'll add a event listener for click event. Basically whenever one of this links is clicked something will happen.</p>
+<p>In this case we're going to add the class <code>is-active</code> to the link. The class is a pre-defined class from Bulma that highlights the menu item (nav link) when it is selected.</p>
+<p>But we also have to account for previous selected link by removing the <code>is-active</code> class from them, otherwise every selected link will be highlighted.</p>
+<h2 id="highlightnavigationlinkwhileyouscroll">Highlight navigation link while you scroll</h2>
+<p>Everything's cool up till this point. User can select a link and quickly navigate to that section with nav link highlighted, which indicate where we are on the page.</p>
+<p>We're going to take this one step further.</p>
+<p>We want the user to know which section of the page they're reading <strong>while they scroll</strong>.</p>
+<p><img src="/content/images/2019/01/highlight-when-scroll.gif" alt="highlight-when-scroll"></p>
+<p>First, we need to find out the position for each section on the page.</p>
+<pre><code class="hljs coffeescript"><span class="hljs-keyword">for</span> (var i=<span class="hljs-number">0</span>; i&lt;quickLinks.length; i++){
+
+<span class="hljs-regexp">//</span>This creates an array <span class="hljs-keyword">of</span> ids, expected output <span class="hljs-keyword">is</span> [<span class="hljs-string">"basic"</span>, <span class="hljs-string">"keyword"</span>, <span class="hljs-string">"onpage"</span>, <span class="hljs-string">"content"</span>, <span class="hljs-string">"technical"</span>, <span class="hljs-string">"link"</span>]
+hashArray.push(quickLinks[i].href.substring(quickLinks[i].href.indexOf(<span class="hljs-string">'#'</span>)+<span class="hljs-number">1</span>));
+}
+
+<span class="hljs-regexp">//</span>This creates an array <span class="hljs-keyword">of</span> position <span class="hljs-keyword">for</span> each <span class="hljs-keyword">of</span> the IDs identified above
+<span class="hljs-keyword">for</span> (var i=<span class="hljs-number">0</span>; i&lt;hashArray.length; i++){
+	positionArray.push(<span class="hljs-built_in">document</span>.getElementById(hashArray[i]).getBoundingClientRect().top);
+}
+</code></pre>
+<p>Then we'll add an event listener for scroll. Whenever the user is scrolling the page, it'll check which position is the current scroll position in.</p>
+<p>If the current scroll position is in between the current section and the next, then apply the <code>is-active</code> class to this section's navigation link, which will highlight it in blue.</p>
+<p>This tells the user which section of the page they're reading.</p>
+<pre><code class="hljs javascript">
+<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">"scroll"</span>, scrollHandler, <span class="hljs-literal">true</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scrollHandler</span>(<span class="hljs-params"></span>) </span>{
+
+	currentScrollPosition = <span class="hljs-built_in">document</span>.documentElement.scrollTop;	
+
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">1</span>; i&lt;=positionArray.length; i++){
+
+		<span class="hljs-keyword">if</span> (currentScrollPosition&gt;=positionArray[i<span class="hljs-number">-1</span>] &amp;&amp; currentScrollPosition &lt; positionArray[i]) {
+
+			<span class="hljs-keyword">var</span> currentActive = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">'is-active'</span>)[<span class="hljs-number">0</span>];
+
+				<span class="hljs-keyword">if</span> (currentActive != <span class="hljs-literal">undefined</span>){
+			currentActive.classList.remove(<span class="hljs-string">'is-active'</span>);
+		}
+			
+			quickLinks[i<span class="hljs-number">-1</span>].classList.add(<span class="hljs-string">'is-active'</span>);
+
+			<span class="hljs-keyword">break</span>;
+
+		}
+
+		<span class="hljs-keyword">if</span> (currentScrollPosition&gt;positionArray[positionArray.length<span class="hljs-number">-1</span>]){
+			<span class="hljs-keyword">var</span> currentActive = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">'is-active'</span>);
+
+
+				<span class="hljs-keyword">var</span> currentActive = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">'is-active'</span>)[<span class="hljs-number">0</span>];
+
+				<span class="hljs-keyword">if</span> (currentActive != <span class="hljs-literal">undefined</span>){
+			currentActive.classList.remove(<span class="hljs-string">'is-active'</span>);
+			}
+			quickLinks[quickLinks.length<span class="hljs-number">-1</span>].classList.add(<span class="hljs-string">'is-active'</span>);
+
+			<span class="hljs-keyword">break</span>;
+
+		}
+	}
+};
+</code></pre>
+<p>With this your page should now have a sticky navigation bar and the ability to tell which section user are reading as they scroll through the page.</p>
+<p>But there's still one minor thing we need to sort out.</p>
+<p>Now whenever you click on a navigation link, it will highlight all of the previous links before it gets to the one you clicked, creating some sort of a delay action.</p>
+<p><img src="/content/images/2019/01/delay-scroll-highlight.gif" alt="delay-scroll-highlight"></p>
+<p>This is because we implemented a scroll event listener. Whenever you click on a nav link, the page is scrolled.</p>
+<p>And when the page is scrolled, the scrollHandler function will be triggered, which highlights all of the sections that we scroll past when we first click on the navigation link.</p>
+<p>In order to achieve the effect we want, we need to temporarily disable the scrollHandler whenever we click on the navigation link.</p>
+<pre><code class="hljs coffeescript"><span class="hljs-built_in">document</span>.removeEventListener(<span class="hljs-string">'scroll'</span>, scrollHandler, <span class="hljs-literal">true</span>);
+</code></pre>
+<p>and once the <code>is-active</code> class is added, we will re-enable the scrollHandler.</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">//re-nable the scrollHandler function 1 second after</span>
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    			<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">"scroll"</span>, scrollHandler, <span class="hljs-literal">true</span>); 
+	}, <span class="hljs-number">1000</span>); 
+</code></pre>
+<p>If you combine this together with the click event code from before, it will now look like this:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;quickLinks.length; i++){
+	quickLinks[i].addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>{
+		
+        <span class="hljs-comment">//disable scroll listener after clicking on nav link</span>
+        <span class="hljs-built_in">document</span>.removeEventListener(<span class="hljs-string">'scroll'</span>, scrollHandler, <span class="hljs-literal">true</span>);
+
+		isActive = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">'is-active'</span>)[<span class="hljs-number">0</span>];
+
+		<span class="hljs-keyword">if</span> (isActive != <span class="hljs-literal">undefined</span>){
+			isActive.classList.remove(<span class="hljs-string">'is-active'</span>);
+		}
+
+		<span class="hljs-keyword">this</span>.classList.add(<span class="hljs-string">'is-active'</span>);
+ 	
+        <span class="hljs-comment">//re-enable scroll event 1 second after is-active class is added</span>
+		setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    			<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">"scroll"</span>, scrollHandler, <span class="hljs-literal">true</span>); 
+	}, <span class="hljs-number">1000</span>); 
+	
+	});
+
+}
+
+</code></pre>
+<p>And that's it! You should now have implemented the sticky navigation with scroll highlights.</p>
+<p><img src="/content/images/2019/01/final-result-1.gif" alt="final-result-1"></p>
+<p>Don't worry if some of what I wrote doesn't make sense just yet. You can check out the full source code for the project <a href="https://github.com/davidnge/sticky-navigation">here</a>.</p>
+<p>If there's any question feel free to comment in the section below!</p>
+<p>I'll see you next time.</p>
+
+            </section>
+          </article>
+
+
+          <form action="https://buttondown.email/api/emails/embed-subscribe/davidnge" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/davidnge', 'popupwindow')" class="embeddable-buttondown-form newsletter-form">
+
+          <div class="newsletter-heading">Like What You Read?</div>
+          <div class="newsletter-desc">Then consider subscribing for my newsletter. It's a collection of my recent findings on web development, design, writing and everything else that catches my interest. I also include new articles and book notes occasionally.</div>
+          <div class="newsletter-input-container">
+          <input class="newsletter-email-input" placeholder="Enter Your Email" type="email" name="email" id="bd-email">
+          <input type="hidden" value="1" name="embed">
+          <input class="newsletter-submit" type="submit" value="Subscribe">
+          </div>
+        </form>
+        </div>
+     </div>
+
+</div>
