@@ -1,0 +1,57 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="https://i.ibb.co/mcwVCNt/Untitled-design-1-removebg.png" width="40" height="28">
+      <h1 class= "kovidyante-edu", style="text-decoration:none">kovidyante . edu</h1>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+        <%= link_to 'Attendance', new_attendance_path, class:"navbar-item"%> 
+
+      <a class="navbar-item">
+        Library
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Homework
+          </a>
+          <a class="navbar-item">
+           Schedule a meeting with teacher
+          </a>
+          <a class="navbar-item">
+            Contact teacher
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          
+  
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

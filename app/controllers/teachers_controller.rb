@@ -1,3 +1,6 @@
 class TeachersController < ApplicationController
-    load_and_authorize_resource
+    def index
+        @teacher = Teacher.all
+    end
+    
 end
