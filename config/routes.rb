@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   resources :homeworks, only: [:index, :new, :create, :destroy]  
-  resources :teachers
-  resources :students
-=======
   # devise_for :installs
 
->>>>>>> c5b0e1bc9685e99a480045735cab615a972726ef
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   # devise_for :users, controllers: {
