@@ -7,6 +7,10 @@ class HomeworksController < ApplicationController
     @homework = Homework.new
   end
 
+  def show
+    @homework = Homework.find(params[:id])
+  end
+
   def create   
     @homework = Homework.new(resume_params)   
        
@@ -27,5 +31,6 @@ class HomeworksController < ApplicationController
   def resume_params   
     params.require(:homework).permit(:name, :attachment)   
   end   
+
 
 end
