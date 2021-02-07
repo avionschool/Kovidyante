@@ -1,7 +1,9 @@
 <%= render "banner/banner" %>
 <h1>SCAN YOUR QRCODE HERE FOR ATTENDANCE</h1><br><br>
 <video id="webcam-preview"width="320" height="240"></video>
-<p id="result"></p>
+<p id="result"></p> <div class="loader" id="loader">
+</div>
+
 
 
   <%# <video id="video"></video> %>
@@ -11,6 +13,7 @@
       <div class="laser"></div>
     </div>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
 <script>const codeReader = new ZXing.BrowserQRCodeReader();
@@ -22,8 +25,9 @@ codeReader.decodeFromVideoDevice(null, 'webcam-preview', (result, err) => {
     found = true;
     // properly decoded qr code
     console.log('Found QR code!', result.text)
-    document.getElementById('result').textContent = 'Please wait..'
-    console.log('hello') 
+    // document.getElementById('result').textContent =  'Please wait.. while saving your input'
+  // swal("Oops!", "Please wait while saving your input!", "alert");
+  swal("Checking if you already scanned you code!", "Please wait..", "success");
 
    var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -36,7 +40,8 @@ var requestOptions = {
   body: raw,
   redirect: 'follow'
 };
-var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+// var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+var proxyUrl =  ' https://thingproxy.freeboard.io/fetch/'
 fetch(proxyUrl + "https://rest-api-lj.herokuapp.com/post", requestOptions)
   .then(response => response.text())
   .then(result => {console.log(result)

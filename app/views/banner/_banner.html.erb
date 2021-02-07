@@ -14,13 +14,12 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-    <%if Attendance.where(status: true) %>
-     <a class="navbar-item">
-        Attendance
-      </a>
-
+    <%if current_user.role == 'teacher'%>
+     <%= link_to 'Attendance',attendances_path, class:"navbar-item"%> 
+      <% else %>
+      <%= link_to 'Attendance', new_attendance_path, class:"navbar-item"%> 
     <% end %>
-        <%= link_to 'Attendance', new_attendance_path, class:"navbar-item"%> 
+       
 
       <a class="navbar-item">
         Library
@@ -43,7 +42,7 @@
           </a>
           <hr class="navbar-divider">
           <a class="navbar-item">
-            Report an issue
+            View QR Code
           </a>
         </div>
       </div>

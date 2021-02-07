@@ -1,1 +1,54 @@
-<%= render "banner/banner" %>
+<%= render "banner/banner" %><br><br><br><br>
+
+
+<%if current_user.role == 'teacher'%>
+<h1>Today's present!</h1>
+	<table class="table table-hover">
+ <thead class="thead-dark">
+  <tr>
+    <th scope="col">Name</th> 
+    <th scope="col">Student ID</th>
+    <th scope="col">Date</th>
+    <th scope="col"></th>
+  
+  </tr>
+  </thead>
+     <% @attendances.each do |t| %>
+	 <% if t.created_at.strftime("%B %d %Y") === Date.today.strftime("%B %d %Y") %>
+	
+   <tr>
+      <td class="desc"><h6><%= link_to t.student_name, class: "link-color" %></h6></td>
+      <td class="desc"><h6><%= link_to t.student_id, class: "link-color" %></h6></td>
+      <td class="desc"><h6><%= link_to t.created_at.strftime("%B %d %Y"), class: "link-color" %></h6></td>
+    </tr>
+ <% end %>
+<%end %>
+</table>
+<% else %>
+<div class = 'landing-page home'>
+		<div class = 'title'>
+			<img src='https://i.ibb.co/mcwVCNt/Untitled-design-1-removebg.png' class = 'kovidyante-logo'>
+			<p class = 'kovidyante-link'> kovidyante.edu </p>
+		</div>
+		<div class = 'log-in'>
+			<% if current_user.nil? %>
+				<%= link_to 'Tara na!', new_user_session_path, class: 'button is-success is-inverted is-outlined is-medium' %>
+			<% elsif current_user.admin == true %>
+				<h3>Welcome Admin</h3>
+			<% elsif current_user.role == "teacher" %>
+				<h3>Welcome Teacher</h3>
+			<% elsif current_user.role == "student" %>
+				<h3>Welcome Student</h3><br>
+			
+
+			<% end %>
+			<%# <%= link_to 'Log out', destroy_user_session_path, method: :delete %> 
+		</div>
+	</div>
+	<%# <div class = 'log-in'>
+		<% if current_user.nil? %>
+			<%# <%= link_to 'Tara na!', new_user_session_path, class: 'button is-success is-inverted is-outlined is-medium' %>
+		<%# <% end %> 
+	
+</div>
+<% end %>

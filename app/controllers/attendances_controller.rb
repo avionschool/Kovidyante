@@ -3,7 +3,12 @@ class AttendancesController < ApplicationController
     before_action :authenticate_user!
   
     def index
-
+        puts 'hello'
+      @attendances = Attendance.all
+    #  Attendance.where(created_at: "2021-02-07 05:38:47")
+    #  Date.today
+    #  byebug
+    
       require "uri"
       require "net/http"
   
@@ -39,17 +44,21 @@ class AttendancesController < ApplicationController
       puts response.read_body
       puts 'deleted'
           # byebug
-     
+         
+               
+          if Attendance.where(student_id:  student_id.to_i).exists?
+            flash[:alert] = "You have scanned your code."
+            else
+                present = Attendance.new(status: true, student_id:  student_id.to_i, student_name: current_user.name)
+                present.save
+          end
+          
       end
-
-      present = Attendance.create(status: true, student_id:  student_id.to_i, student_name: current_user.name)
-      
-      end
-
+    end
       private
 
       def attendance_params
         params.require(:attendance).permit(:status, :student_id, :student_name)
       end
-  
+   
   end
