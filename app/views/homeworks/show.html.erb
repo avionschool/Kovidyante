@@ -1,0 +1,30 @@
+<h1><%= @homework.name %></h1>
+<hr>
+
+<h1>Answers</h1>
+    <% @homework.answers.each do |answer| %>
+        <div class="well">               
+            <p><strong><%= answer.name %></strong> | <%= answer.attachment %></p>
+        </div>
+    <% end %>
+    
+<hr>
+
+<h1> Add Answers</h1>
+<br>
+
+<div>   
+    <%= form_for([@homework, @homework.answers.build]) do |f| %>   
+        <div>               
+            <%= f.label :name %>: <%= f.text_field :name %>  
+        </div>
+        <br>
+        <div> 
+            <%= f.label :attachment %>: <%= f.file_field :attachment %>   
+        </div>
+        <br>   
+        <div> 
+                <%= f.submit "Save" %>   
+        </div>
+    <% end %>   
+</div> 

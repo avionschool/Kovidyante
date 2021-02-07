@@ -1,0 +1,11 @@
+automation tools such as Ansible, Puppet, Chef, Robot
+Linux kernel drivers.
+Development of bootloaders: UEFI and coreboot.
+C and a scripting language sucAWS, Google Cloud Platform, Docker, ECS, Lambda, SNS, SQS, Step Functions, and more
+
+
+
+this
+
+function call---access window objectt
+method call--- access the object it belongs to
