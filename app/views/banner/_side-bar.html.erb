@@ -7,7 +7,7 @@
 	<%= render "banner/content"%> <br>
 	
 	<%# main %>
-    <div class="column content is-white">
-	<%= render new_attendance_path%> <br>
+    <div class="column content is-white main">
+		<%= render template: new_task_path, task: @task %> <br>
 	</div>
 </div>

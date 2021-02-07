@@ -132,6 +132,19 @@
     li:hover{
       background-color: #7ed957;
     }
+
+    .new-task {
+      display: flex;
+      position: relative;
+      text-align: left;
+      align-self: center;
+      justify-content: center;
+      padding:200px;
+    }
+
+    .main {
+      margin: 0;
+    }
 /*   
   @keyframes spin {
     0% { transform: rotate(0deg); }
