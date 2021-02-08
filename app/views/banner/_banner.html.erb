@@ -12,42 +12,6 @@
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-    <%if current_user.role == 'teacher'%>
-     <%= link_to 'Attendance',attendances_path, class:"navbar-item"%> 
-      <% else %>
-      <%= link_to 'Attendance', new_attendance_path, class:"navbar-item"%> 
-    <% end %>
-       
-
-      <a class="navbar-item">
-        Library
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Homework
-          </a>
-          <a class="navbar-item">
-           Schedule a meeting with teacher
-          </a>
-          <a class="navbar-item">
-            Contact teacher
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            View QR Code
-          </a>
-        </div>
-      </div>
-    </div>
-
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
