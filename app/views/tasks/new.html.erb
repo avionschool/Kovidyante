@@ -1,47 +1,37 @@
-<%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<div class = 'new-task'>
+  <%= form_with(model: @task, url: new_task_path, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :title,class: "label" %>
+      <%= form.text_field :title, style: "margin: 0px; width:583.6px; height: 50px;" %>
+    </div>
 
-      <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="field">
+      <%= form.label :description,class: "label" %>
+      <%= form.text_field :description, style: "margin: 0px; width:583.6px; height: 50px;" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :start_date %>
+      <%= form.datetime_select :start_date %>
+    </div>
+
+    <div class="field">
+      <%= form.label :end_date %>
+      <%= form.datetime_select :end_date %>
+    </div>
+
+    <div class="field">
+      <%= form.label :event, class: "label" %>
+      <%= form.text_field :event, style: "margin: 0px; width:583.6px; height: 50px;"%>
+    </div>
+
+    <div class="field">
+      <%= form.label :members, class: "label" %>
+      <%= form.text_field :members, style: "margin: 0px; width:583.6px; height: 50px;" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class: 'button is-primary' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.datetime_select :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.datetime_select :end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :event %>
-    <%= form.text_field :event %>
-  </div>
-
-  <div class="field">
-    <%= form.label :members %>
-    <%= form.text_field :members %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

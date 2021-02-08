@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :homeworks, only: [:index, :new, :create, :destroy]  
+  resources :homeworks do
+    resources :answers
+  end
   # devise_for :installs
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

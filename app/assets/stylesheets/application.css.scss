@@ -132,6 +132,51 @@
     li:hover{
       background-color: #7ed957;
     }
+
+    .laser {
+      width: 50%;
+      margin:auto;
+      background-color: tomato;
+      height: 1px;
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      box-shadow: 0 0 4px red;
+      animation: scanning 2s infinite;
+    }
+  
+    .diode {
+      animation: beam .01s infinite;
+    }
+  
+    @keyframes beam {
+      60% {
+        opacity: 0;
+      }
+    }
+    
+    @keyframes scanning {
+      60% {
+        transform: translateY(75px);
+      }
+    }
+
+    
+    
+    .new-task {
+      display: flex;
+      position: relative;
+      text-align: left;
+      align-self: center;
+      justify-content: center;
+      padding:200px;
+    }
+
+    .main {
+      margin: 0;
+    }
 /*   
   @keyframes spin {
     0% { transform: rotate(0deg); }
