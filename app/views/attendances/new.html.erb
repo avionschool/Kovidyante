@@ -42,7 +42,8 @@ var requestOptions = {
   body: raw,
   redirect: 'follow'
 };
-var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+// var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+ var proxyUrl = 'http://www.whateverorigin.org/get?url='
 // var proxyUrl =  ' https://thingproxy.freeboard.io/fetch/'
 fetch(proxyUrl + "https://rest-api-lj.herokuapp.com/post", requestOptions)
   .then(response => response.text())
@@ -51,7 +52,6 @@ fetch(proxyUrl + "https://rest-api-lj.herokuapp.com/post", requestOptions)
   }) 
     
   .catch(error => console.log('error', error));
-
 
   }
 
