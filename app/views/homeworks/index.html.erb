@@ -10,11 +10,38 @@
 <hr>
       <% @homeworks.each do |homework| %>    
             <p><%= homework.name %></p>   
-            <button><%= link_to "Show", homework.attachment_url %></button>   
-            <button><%= link_to "Answers", homework_path(homework) %></button>
+            <button><%= link_to "Show", homework.attachment_url,  class: "button is-primary" %></button>   
+            <button><%= link_to "Answers", homework_path(homework),  class: "button is-primary" %></button>
             <% if current_user.role == 'teacher' %>
-               <button><%= link_to "Delete",  homework, method: :delete, confirm: "Are you sure you want to delete #{homework.name}?" %></button>   
+               <button><%= link_to "Delete",  homework, method: :delete, confirm: "Are you sure you want to delete #{homework.name}?",  class: "button is-primary" %></button>   
             <% end %>         
+
+<% if current_user.role == 'teacher' %>
+ <%= link_to "Add Homework", new_homework_path , class: "button is-primary is-large", style: "margin: 0px; width:583.6px; height: 50px; padding: 50px; margin-bottom: 100px; text-decoration: none;" %>   
+<% end %>
+
+<table class = 'table is-striped is-narrow is-hoverable is-fullwidth'>   
+   <thead>   
+      <tr>   
+         <th>Homework</th>   
+         <th>Download Link</th>   
+         <% if current_user.role == 'teacher' %>
+            <th>Action</th>   
+         <% end %>
+      </tr>   
+   </thead>   
+      
+   <tbody>   
+      <% @homeworks.each do |homework| %>   
+            
+        <tr>   
+            <td><%= homework.name %></td>   
+            <td><%= link_to "Download", homework.attachment_url, class: "button is-primary" %></td>   
+            <% if current_user.role == 'teacher' %>
+               <td><%= link_to "Delete",  homework, method: :delete, confirm: "Are you sure you want to delete #{homework.name}?", class: "button is-primary"%></td>   
+            <% end %>
+        </tr>   
+            
       <% end %>   
 <hr>
 
