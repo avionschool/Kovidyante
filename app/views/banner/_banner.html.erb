@@ -1,7 +1,8 @@
+<% if (current_user.present?) %>
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <img src="https://i.ibb.co/mcwVCNt/Untitled-design-1-removebg.png" width="40" height="28">
+      <img src="https://i.ibb.co/mcwVCNt/Untitled-design-1-removebg.png" width="50" height="90">
       <h1 class= "kovidyante-edu", style="text-decoration:none">kovidyante . edu</h1>
     </a>
 
@@ -12,15 +13,41 @@
     </a>
   </div>
 
+<<<<<<< HEAD
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
+=======
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+      <%if current_user.role == 'teacher'%>
+      <%= link_to 'Attendance', attendances_path, class:"navbar-item"%> 
+        <% else %>
+        <%= link_to 'Attendance', new_attendance_path, class:"navbar-item"%> 
+      <% end %>
+        
+
+        <a class="navbar-item">
+          <%= link_to 'Homeworks', homeworks_path, class:"navbar-item"%> 
+        </a>
+
+        <a class="navbar-item">
+          <%= link_to 'Contact', new_task_path, class:"navbar-item"%> 
+        </a>
+
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            
+    
+              <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+>>>>>>> a336d529ec3baa952a26990b0679ee75b55ee8d8
           
-  
-            <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-         
+          </div>
         </div>
       </div>
-    </div>
   </div>
 </nav>
+    <% end %>
