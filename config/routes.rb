@@ -15,6 +15,6 @@ Rails.application.routes.draw do
      omniauth_callbacks: 'users/omniauth_callbacks'}
   # devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root to: "home#index"
-
+  get   '/qrcodes/qrpage' => 'qrcodes#qrpage', as: 'qr_page'
   resources :teachers, :students, :tasks, :users, :subjects, :attendances
 end

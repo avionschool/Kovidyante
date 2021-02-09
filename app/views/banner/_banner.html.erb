@@ -29,6 +29,11 @@
         <a class="navbar-item">
           <%= link_to 'Contact', new_task_path, class:"navbar-item"%> 
         </a>
+  <%if current_user.role === 'student'%>
+           <a class="navbar-item">
+          <%= link_to 'View QRcode', qr_page_path, class:"navbar-item"%> 
+        </a>
+<% end %>
 
       </div>
 
