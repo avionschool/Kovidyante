@@ -13,13 +13,13 @@
         
         <div>   
             <%= form_for @homework, html: { multipart: true } do |f| %>   
-                <%= f.label :name %>   
-                <%= f.text_field :name %>   
+                <%= f.label :name, class: "label"%>   
+                <%= f.text_field :name, style: "margin: 0px; width:583.6px; height: 50px;"%>   
                 <br><br>   
-                <%= f.label :attachment %>   
-                <%= f.file_field :attachment %>   
+                <%= f.label :attachment, class: "label" %>   
+                <%= f.file_field :attachment, style: "margin: 20px; width:583.6px; height: 50px;font-size: 20px;"  %>   
                 <br>   
-                <%= f.submit "Save" %>   
+                <%= f.submit "Save", class: 'button is-primary', style: "margin: 20px; width:583.6px; height: 50px;font-size: 20px;"  %>   
             <% end %>   
         </div>   
     </div>

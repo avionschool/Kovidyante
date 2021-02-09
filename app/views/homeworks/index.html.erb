@@ -6,7 +6,7 @@
 <% end %>   
 
 <% if current_user.role == 'teacher' %>
- <%= link_to "New Homework", new_homework_path %>   
+ <%= link_to "Add Homework", new_homework_path , class: "button is-primary is-large", style: "margin: 0px; width:583.6px; height: 50px; padding: 50px; margin-bottom: 100px; text-decoration: none;" %>   
 <% end %>
 
 <table class = 'table is-striped is-narrow is-hoverable is-fullwidth'>   
@@ -14,7 +14,7 @@
       <tr>   
          <th>Homework</th>   
          <th>Download Link</th>   
-         <% if current_user.role == 'teacher' %>i
+         <% if current_user.role == 'teacher' %>
             <th>Action</th>   
          <% end %>
       </tr>   
@@ -25,9 +25,9 @@
             
         <tr>   
             <td><%= homework.name %></td>   
-            <td><%= link_to "Download", homework.attachment_url %></td>   
+            <td><%= link_to "Download", homework.attachment_url, class: "button is-primary" %></td>   
             <% if current_user.role == 'teacher' %>
-               <td><%= link_to "Delete",  homework, method: :delete, confirm: "Are you sure you want to delete #{homework.name}?" %></td>   
+               <td><%= link_to "Delete",  homework, method: :delete, confirm: "Are you sure you want to delete #{homework.name}?", class: "button is-primary"%></td>   
             <% end %>
         </tr>   
             

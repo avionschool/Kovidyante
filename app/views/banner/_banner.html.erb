@@ -16,7 +16,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
       <%if current_user.role == 'teacher'%>
-      <%= link_to 'Attendance', new_attendance_path, class:"navbar-item"%> 
+      <%= link_to 'Attendance', attendances_path, class:"navbar-item"%> 
         <% else %>
         <%= link_to 'Attendance', new_attendance_path, class:"navbar-item"%> 
       <% end %>
