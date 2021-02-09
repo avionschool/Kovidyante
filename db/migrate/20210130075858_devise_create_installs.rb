@@ -39,6 +39,5 @@ class DeviseCreateInstalls < ActiveRecord::Migration[6.0]
     add_index :installs, :email,                unique: true
     add_index :installs, :reset_password_token, unique: true
     add_index :installs, :confirmation_token,   unique: true
-    add_index :installs, :unlock_token,         unique: true
   end
 end
