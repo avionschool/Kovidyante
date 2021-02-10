@@ -48,8 +48,8 @@ var requestOptions = {
 
 
 // var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
- var proxyUrl = 'https://cors-proxy.htmldriven.com/?url='
-// var proxyUrl =  ' https://thingproxy.freeboard.io/fetch/'
+//  var proxyUrl = 'https://cors-proxy.htmldriven.com/?url='
+var proxyUrl =  ' https://thingproxy.freeboard.io/fetch/'
 fetch(proxyUrl + "https://rest-api-lj.herokuapp.com/post", requestOptions)
   .then(response => response.text())
   .then(result => {console.log(result)
