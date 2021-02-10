@@ -19,6 +19,7 @@ class AttendancesController < ApplicationController
   
       request = Net::HTTP::Get.new(url)
       request["Content-Type"] = "application/json"
+      
      
       response = https.request(request)
       puts response.read_body
